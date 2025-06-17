@@ -79,4 +79,19 @@ class RegistrationController extends AbstractController
 
         return $this->redirectToRoute('app_register');
     }
+
+    public function registerNavTab(Request $request): Response
+    {
+        $user=new Users();
+        $form=$this->createForm(RegistrationForm::class,$user,[
+            'action'=>$this->generateUrl('app_register'),
+            'method'=>'POST'
+        ]);
+
+        $form->handleRequest($request);
+
+        return $this->render('security/_partials/_register.html.twig', [
+           'registrationForm'=>$form->createView() 
+        ]);
+    }
 }

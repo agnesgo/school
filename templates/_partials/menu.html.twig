@@ -15,20 +15,24 @@
 					<div class="headerarea__main__menu">
 						<nav>
 							<ul>
-                                {% for item in categories %}
-								<li>
-									<a class="headerarea__has__dropdown" href="ecommerce/shop.html">{{ item.name }}
-										<i class="icofont-rounded-down"></i>
-									</a>
-									<ul class="headerarea__submenu">
-										<li>
-											<a href="ecommerce/shop.html">Shop<span class="mega__menu__label">Online Store</span>
-											</a>
-										</li>
-									
-									</ul>
-								</li>
-                                {% endfor %}
+								{% for item in categories %}
+									<li>
+										<a class="headerarea__has__dropdown" href="ecommerce/shop.html">{{ item.name }}
+											<i class="icofont-rounded-down"></i>
+										</a>
+										{% if item.categories is defined and item.categories is not empty %}
+											<ul class="headerarea__submenu">
+												{% for subitem in item.categories %}
+													<li>
+														<a href="ecommerce/shop.html">
+                                                        {{ subitem.name }}
+														</a>
+													</li>
+												{% endfor %}
+											</ul>
+										{% endif %}
+									</li>
+								{% endfor %}
 
 
 							</ul>
@@ -227,7 +231,7 @@
 									</p>
 									<div class="header__right__dropdown__button">
 										<a href="#" class="white__color">VIEW
-											                                            CART</a>
+																						                                            CART</a>
 										<a href="#" class="blue__color">CHECKOUT</a>
 									</div>
 								</div>
@@ -709,16 +713,16 @@
 			</div>
 
 			<!-- <div class="single-mobile-curr-lang">
-			                                <a class="mobile-currency-active" href="#">Currency <i class="icofont-thin-down"></i></a>
-			                                <div class="lang-curr-dropdown curr-dropdown-active">
-			                                    <ul>
-			                                        <li><a href="#">USD</a></li>
-			                                        <li><a href="#">EUR</a></li>
-			                                        <li><a href="#">Real</a></li>
-			                                        <li><a href="#">BDT</a></li>
-			                                    </ul>
-			                                </div>
-			                            </div> -->
+						                                <a class="mobile-currency-active" href="#">Currency <i class="icofont-thin-down"></i></a>
+						                                <div class="lang-curr-dropdown curr-dropdown-active">
+						                                    <ul>
+						                                        <li><a href="#">USD</a></li>
+						                                        <li><a href="#">EUR</a></li>
+						                                        <li><a href="#">Real</a></li>
+						                                        <li><a href="#">BDT</a></li>
+						                                    </ul>
+						                                </div>
+						                            </div> -->
 
 			<div class="single-mobile-curr-lang">
 				<a class="mobile-account-active" href="#">My Account
